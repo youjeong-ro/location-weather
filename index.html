@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-  <html lang="ko">
+<html lang="ko">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Uam-dong Weather</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Uam-dong Weather Monitoring</title>
       <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-      <div class="container">
-          <div class="weather-card">
-              <h1 id="location">Busan Nam-gu Uam-dong</h1>
-              <div class="main-info">
-                  <img id="weather-icon" src="" alt="Weather Icon">
-                  <span id="temperature">--C</span>
-              </div>
-              <p id="description">Loading...</p>
-              <div class="details">
-                  <div class="detail-item">
-                      <span>Humidity</span>
-                      <span id="humidity">--%</span>
-                  </div>
-                  <div class="detail-item">
-                      <span>Wind</span>
-                      <span id="wind-speed">--m/s</span>
-                  </div>
-              </div>
-              <div class="forecast" id="forecast"></div>
-          </div>
-      </div>
-      <script src="app.js"></script>
-  </body>
-  </html>
+<body>
+      <div id="loading-overlay"><div class="spinner"></div>div></div>div>
+      <main class="dashboard">
+                <section class="glass-card main-weather">
+                              <div class="location">
+                                                <h1>Busan Nam-gu</h1>
+                                              <p>Uam-dong</p>
+                                              <p id="current-date"></p>
+                              </div>div>
+                            <div class="temp-container">
+                                            <div class="temperature"><span id="temp-value"></span>span><span class="temp-unit">deg</span>span></div>div>
+                                            <p class="condition" id="weather-condition"></p>
+                            </div>div>
+                            <div class="details-grid">
+                                            <div class="metric-card"><p>Humidity</p><p id="humidity">--%</p></div>div>
+                                            <div class="metric-card"><p>Wind Speed</p><p id="wind-speed">--m/s</p></div>div>
+                            </div>div>
+                </section>section>
+              <section class="side-panel">
+                          <div class="glass-card">
+                                          <h2>Forecast</h2>
+                                          <div id="forecast-container"></div>div>
+                          </div>div>
+              </section>section>
+      </main>main>
+    <script src="app.js"></script>
+</body>
+</html>html></p></p></h1>
+</body></title>
+  </head>
