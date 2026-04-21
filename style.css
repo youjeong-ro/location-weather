@@ -1,47 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+          --primary: #6366f1;
+          --secondary: #a855f7;
+          --bg-dark: #0f172a;
+          --card-bg: rgba(255, 255, 255, 0.05);
+          --card-border: rgba(255, 255, 255, 0.1);
+          --text-main: #f8fafc;
+          --text-muted: #94a3b8;
+          --glass-blur: blur(20px);
+}
+
+* {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Outfit', sans-serif;
+}
+
 body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f0f2f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+          background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8));
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          color: var(--text-main);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow-x: hidden;
 }
-.weather-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 320px;
-      text-align: center;
+
+.dashboard {
+          width: 90%;
+          max-width: 1200px;
+          padding: 2rem;
+          display: grid;
+          grid-template-columns: 1fr 1.5fr;
+          gap: 2rem;
+          animation: fadeIn 1s ease-out;
 }
-h1 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #333;
+
+@keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
 }
-.main-info {
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 20px 0;
+
+.glass-card {
+          background: var(--card-bg);
+          backdrop-filter: var(--glass-blur);
+          border: 1px solid var(--card-border);
+          border-radius: 24px;
+          padding: 2.5rem;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+          transition: transform 0.3s ease;
 }
-.details {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #666;
+
+.glass-card:hover { border-color: rgba(255, 255, 255, 0.2); }
+
+.main-weather {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
 }
-.forecast {
-      margin-top: 30px;
-      border-top: 1px solid #eee;
-      padding-top: 20px;
-}
-.forecast-item {
-      display: grid;
-      grid-template-columns: 80px 60px 1fr;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      text-align: left;
-}
+
+.location h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+.location p { color: var(--text-muted); font-size: 0.9rem; }
+
+.temp-container { margin: 3rem 0; }
+.temperature { font-size: 6rem; font-weight: 700; letter-spacing: -4px; line-height: 1; }
+.temp-unit { font-size: 2.5rem; vertical-align: top; color: var(--primary); }
+.condition { font-size: 1.25rem; color: var(--text-main); text-transform: capitalize; }
+
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.metric-card { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
+.metric-label { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+.metric-value { font-size: 1.5rem; font-weight: 600; }
+
+.side-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+.forecast-row { display: grid; grid-template-columns: 80px 60px 1fr; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.forecast-row span:nth-child(2) { text-align: center; color: var(--primary); font-weight: 600; }
+.forecast-row span:nth-child(3) { text-align: right; font-size: 0.8rem; color: var(--text-muted); }
+
+#loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease; }
+.spinner { width: 50px; height: 50px; border: 3px solid rgba(255, 255, 255, 0.1); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
